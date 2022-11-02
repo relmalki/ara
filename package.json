@@ -1,0 +1,19 @@
+{
+  "name": "ara",
+  "version": "1.0.0",
+  "description": "This is a cli to have responses of any questions",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "boxen": "^7.0.0",
+    "chalk": "^5.1.2",
+    "fetch": "^1.1.0",
+    "node-fetch": "^3.2.10",
+    "yargs": "^17.6.0"
+  },
+  "type": "module"
+}
