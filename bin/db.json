@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "name": "This is my task1",
+      "completed": true
+    },
+    {
+      "name": "This one is task2",
+      "completed": false
+    },
+    {
+      "name": "This is olso task3",
+      "completed": true
+    },
+    {
+      "name": "This is onother task4",
+      "completed": true
+    },
+    {
+      "name": "This is task created manually",
+      "completed": false
+    },
+    {
+      "name": "This is task created manually 2",
+      "completed": false
+    }
+  ]
+}
