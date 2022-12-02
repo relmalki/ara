@@ -30,7 +30,34 @@ export async function addTask(qa) {
   console.log(chalk.white.italic("Task "), chalk.white.bold(qa), chalk.white.italic(" created"));
 }
 
+export async function completeTask(id) {
 
+  await db.read()
+
+  // If db.json doesn't exist, db.data will be null
+  // Use the code below to set default data
+  // db.data = db.data || { posts: [] } // For Node < v15.x
+  db.data ||= { tasks: [] }             // For Node >= 15.x
+
+  for (const key in db.data) {
+    if (Object.hasOwnProperty.call(db.data, key)) {
+      const taskList = db.data[key];
+
+      for (const key in taskList) {
+        if (Object.hasOwnProperty.call(taskList, key)) {
+          const task = taskList[key];
+          if (task.id == id)
+            db.data.tasks.push({ "id": id, "name": task.name, "completed": true });
+        }
+      }
+    }
+  }
+
+  // Finally write db.data content to file
+  await db.write()
+
+  console.log(chalk.white.italic("Task "), chalk.white.bold(qa), chalk.white.italic(" completed"));
+}
 export async function listTask() {
 
   await db.read()
@@ -50,10 +77,11 @@ export async function listTask() {
         if (Object.hasOwnProperty.call(taskList, key)) {
           const task = taskList[key];
           if (task.completed)
-            console.log(chalk.bgGreenBright.italic.blue.bold(task.name));
+            console.log(chalk.blue.bold.underline(task.id) + ". " + chalk.bgGreenBright.italic.blue.bold(task.name));
           else
-            console.log(chalk.grey.bold(task.name));
+            console.log(chalk.blue.bold.underline(task.id) + ". " + chalk.bgWhite.bold(task.name));
         }
+        console.log(chalk.blue("------------------------------------------------"))
       }
 
     }

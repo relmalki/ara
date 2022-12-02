@@ -4,15 +4,12 @@
 import chalk from "chalk";
 import boxen from "boxen";
 import yargs from "yargs/yargs";
-import { listTask, addTask } from "./ai.js";
+import { listTask, addTask, completeTask } from "./ai.js";
 
 //const greetingV2 = `Hello, ${options.name}!`;
 
 const greeting = chalk.white.bold("Hello, I'm ara cli ");
 const log = console.log;
-
-
-
 
 const boxenOptions = {
   padding: 1,
@@ -47,5 +44,7 @@ if (argv.a != undefined)
   addTask(qa);
 if (argv.l != undefined)
   listTask();
+if (argv.c != undefined)
+  completeTask(argv.c);
 
 
