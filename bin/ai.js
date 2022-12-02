@@ -22,7 +22,7 @@ export async function addTask(qa) {
   // db.data = db.data || { posts: [] } // For Node < v15.x
   db.data ||= { tasks: [] }             // For Node >= 15.x
 
-  db.data.tasks.push({ "name": qa, "completed": false });
+db.data.tasks.push({ "id":db.data.tasks.length+1,"name": qa, "completed": false });
 
   // Finally write db.data content to file
   await db.write()
@@ -56,7 +56,7 @@ export async function completeTask(id) {
   // Finally write db.data content to file
   await db.write()
 
-  console.log(chalk.white.italic("Task "), chalk.white.bold(qa), chalk.white.italic(" completed"));
+  console.log(chalk.white.italic("Task "), chalk.white.bold("qa"), chalk.white.italic(" completed"));
 }
 export async function listTask() {
 
