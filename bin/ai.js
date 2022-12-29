@@ -22,7 +22,7 @@ export async function addTask(qa) {
   // db.data = db.data || { posts: [] } // For Node < v15.x
   db.data ||= { tasks: [] }             // For Node >= 15.x
 
-db.data.tasks.push({ "id":db.data.tasks.length+1,"name": qa, "completed": false });
+  db.data.tasks.push({ "id": db.data.tasks.length + 1, "name": qa, "completed": false });
 
   // Finally write db.data content to file
   await db.write()
@@ -46,9 +46,14 @@ export async function completeTask(id) {
       for (const key in taskList) {
         if (Object.hasOwnProperty.call(taskList, key)) {
           const task = taskList[key];
-          if (task.id == id)
+
+          if (task.id == id) {
+            db.data.tasks.splice(key,1); // 2nd parameter means remove one item only
             db.data.tasks.push({ "id": id, "name": task.name, "completed": true });
+          
+          }
         }
+
       }
     }
   }
