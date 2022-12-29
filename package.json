@@ -1,13 +1,13 @@
 {
-  "name": "ara",
+  "name": "@relmalki/ara",
   "version": "1.0.0",
   "description": "This is a cli to have responses of any questions",
   "main": "bin/index.js",
   "scripts": {
     "test": "echo \"no test specified\" && exit 0"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Redouane ELMALKI",
+  "license": "MIT",
   "dependencies": {
     "boxen": "^7.0.0",
     "chalk": "^5.1.2",
@@ -18,5 +18,17 @@
     "xterm-addon-web-links": "^0.7.0",
     "yargs": "^17.6.0"
   },
-  "type": "module"
+  "type": "module",
+  "bin": {
+    "ara": "bin/ai.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/relmalki/ara.git"
+  },
+  "bugs": {
+    "url": "https://github.com/relmalki/ara/issues"
+  },
+  "homepage": "https://github.com/relmalki/ara#readme"
 }
