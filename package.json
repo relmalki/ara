@@ -16,7 +16,7 @@
     "start": "node ."
   },
   "bin": {
-    "aracli": "./index.js"
+    "arali": "./index.js"
   },
   "repository": {
     "type": "git",
