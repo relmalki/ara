@@ -30,7 +30,7 @@ export async function addTask(qa) {
   console.log(chalk.white.italic("Task "), chalk.white.bold(qa), chalk.white.italic(" created"));
 }
 
-export async function completeTask(id) {
+export async function changeTaskStatus(id, status) {
 
   await db.read()
 
@@ -48,9 +48,9 @@ export async function completeTask(id) {
           const task = taskList[key];
 
           if (task.id == id) {
-            db.data.tasks.splice(key,1); // 2nd parameter means remove one item only
-            db.data.tasks.push({ "id": id, "name": task.name, "completed": true });
-          
+            db.data.tasks.splice(key, 1); // 2nd parameter means remove one item only
+            db.data.tasks.push({ "id": id, "name": task.name, "completed": status });
+
           }
         }
 
@@ -61,8 +61,44 @@ export async function completeTask(id) {
   // Finally write db.data content to file
   await db.write()
 
-  console.log(chalk.white.italic("Task "), chalk.white.bold("qa"), chalk.white.italic(" completed"));
+  if (status == true)
+    console.log(chalk.white.italic("Task "), chalk.white.bold("qa"), chalk.white.italic(" completed"));
+  else
+    console.log(chalk.white.italic("Task "), chalk.white.bold("qa"), chalk.white.italic(" uncompleted"));
 }
+export async function deleteTask(id) {
+
+  await db.read()
+
+  // If db.json doesn't exist, db.data will be null
+  // Use the code below to set default data
+  // db.data = db.data || { posts: [] } // For Node < v15.x
+  db.data ||= { tasks: [] }             // For Node >= 15.x
+
+  for (const key in db.data) {
+    if (Object.hasOwnProperty.call(db.data, key)) {
+      const taskList = db.data[key];
+
+      for (const key in taskList) {
+        if (Object.hasOwnProperty.call(taskList, key)) {
+          const task = taskList[key];
+
+          if (task.id == id) {
+            db.data.tasks.splice(key, 1); // 2nd parameter means remove one item only
+
+          }
+        }
+
+      }
+    }
+  }
+
+  // Finally write db.data content to file
+  await db.write()
+
+  console.log(chalk.white.italic("Task "), chalk.white.bold("qa"), chalk.white.italic(" deleted"));
+}
+
 export async function listTask() {
 
   await db.read()

@@ -4,7 +4,7 @@
 import chalk from "chalk";
 import boxen from "boxen";
 import yargs from "yargs/yargs";
-import { listTask, addTask, completeTask } from "./ai.js";
+import { listTask, addTask, changeTaskStatus, deleteTask } from "./ai.js";
 
 //const greetingV2 = `Hello, ${options.name}!`;
 
@@ -33,18 +33,28 @@ var argv = yargs(process.argv.slice(2))
   .alias("l", "list")
   .nargs("l", 0)
   .describe("l", "list Tasks")
+  .alias("d", "delete")
+  .nargs("d", 1)
+  .describe("d", "delete Tasks")
+  .alias("u", "uncomplete")
+  .nargs("u", 1)
+  .describe("u", "uncomplete Tasks")
   .help('h')
   .alias('h', 'help')
   .epilog('copyright 2019')
   .argv;
 
 const qa = argv.a;
-
+const complete = true;
+const uncomplete = false;
 if (argv.a != undefined)
   addTask(qa);
 if (argv.l != undefined)
   listTask();
 if (argv.c != undefined)
-  completeTask(argv.c);
-
+  changeTaskStatus(argv.c, complete);
+if (argv.u != undefined)
+  changeTaskStatus(argv.u,uncomplete);
+if (argv.d != undefined)
+  deleteTask(argv.d);
 
