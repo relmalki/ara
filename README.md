@@ -1,5 +1,5 @@
 
-# Arali
+# Arali ![Status](https://github.com/relmalki/ara/actions/workflows/node.js.yml/badge.svg)
  
 This is a cli to manage tasks
 
