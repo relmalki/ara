@@ -26,7 +26,8 @@ const msgBox = boxen(greeting, boxenOptions);
 var argv = yargs(process.argv.slice(2))
   .usage(msgBox + 'Usage: $0 <command> [options]')
   .command('ara', 'Il doit repondre à une question')
-  .example('$0 ara -a foo.js', 'count the lines in the given file')
+  .example('$0 -a "taskname"', 'add task')
+  .example('$0 -c 1', 'complete task id 1')
   .alias('a', 'add')
   .nargs('a', 1)
   .describe('a', 'Add task')
@@ -41,7 +42,7 @@ var argv = yargs(process.argv.slice(2))
   .describe("u", "uncomplete Tasks")
   .help('h')
   .alias('h', 'help')
-  .epilog('copyright 2019')
+  .epilog('Redouane ELMALKI copyright 2021')
   .argv;
 
 const qa = argv.a;
