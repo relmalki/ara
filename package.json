@@ -8,11 +8,11 @@
   },
   "name": "arali",
   "description": "<p align=\"center\">     <img src=\"\"         height=\"130\"> </p> <p align=\"center\">",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "test",
+    "test": "echo 'Empty try to implement to tests in future ...'",
     "start": "node ."
   },
   "bin": {
