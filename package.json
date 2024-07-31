@@ -8,7 +8,7 @@
   },
   "name": "arali",
   "description": "<p align=\"center\">     <img src=\"\"         height=\"130\"> </p> <p align=\"center\">",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "type": "module",
   "scripts": {
